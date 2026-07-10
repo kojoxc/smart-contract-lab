@@ -4,7 +4,7 @@ pragma solidity 0.8.20;
 contract MinimalERC20 {
     string public name;
     string public symbol;
-    uint8 public constant DECIMALS = 18;
+    uint8 public constant decimals = 18;
 
     uint256 public totalSupply;
     address public owner;
