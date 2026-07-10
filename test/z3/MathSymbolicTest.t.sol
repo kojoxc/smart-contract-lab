@@ -12,7 +12,7 @@ contract MathSymbolicTest is Test {
         //  unchecked {
         //     average = min + (min - max) / 2;
         //  }
-        
+
         uint256 average = min + (max - min) / 2;
 
         // assertGe(average, a <= b ? a : b);

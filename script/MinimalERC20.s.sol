@@ -7,7 +7,7 @@ import {MinimalERC20} from "../src/MinimalERC20.sol";
 contract MinimalERC20_Deploy is Script {
     function run() public {
         uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
-        
+
         address deployerWallet = vm.addr(deployerPrivateKey);
 
         vm.startBroadcast(deployerPrivateKey);
