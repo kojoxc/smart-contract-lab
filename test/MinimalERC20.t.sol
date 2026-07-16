@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
-import {Test} from "forge-std/Test.sol";
-import {MinimalERC20} from "../src/MinimalERC20.sol";
+import { Test } from "forge-std/Test.sol";
+import { MinimalERC20 } from "../src/MinimalERC20.sol";
 
 contract MinimalERC20Test is Test {
     MinimalERC20 internal token;

@@ -1,10 +1,13 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
-import {Test} from "forge-std/Test.sol";
+import { Test } from "forge-std/Test.sol";
 
 contract MathSymbolicTest is Test {
-    function test_CheckAverage(uint256 a, uint256 b) external pure {
+    function test_CheckAverage(
+        uint256 a,
+        uint256 b
+    ) external pure {
         // uint256 average;
         uint256 min = a <= b ? a : b;
         uint256 max = a > b ? a : b;

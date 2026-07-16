@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
-import {Script} from "forge-std/Script.sol";
-import {MinimalERC20} from "../src/MinimalERC20.sol";
+import { Script } from "forge-std/Script.sol";
+import { MinimalERC20 } from "../src/MinimalERC20.sol";
 
 contract MinimalERC20_Deploy is Script {
     function run() public {

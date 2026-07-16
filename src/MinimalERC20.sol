@@ -19,7 +19,10 @@ contract MinimalERC20 {
     event Transfer(address indexed from, address indexed to, uint256 value);
     event Approval(address indexed owner, address indexed spender, uint256 value);
 
-    constructor(string memory name_, string memory symbol_) {
+    constructor(
+        string memory name_,
+        string memory symbol_
+    ) {
         name = name_;
         symbol = symbol_;
         owner = msg.sender;
@@ -34,18 +37,28 @@ contract MinimalERC20 {
         if (msg.sender != owner) revert Unauthorized();
     }
 
-    function transfer(address to, uint256 amount) external returns (bool) {
+    function transfer(
+        address to,
+        uint256 amount
+    ) external returns (bool) {
         _transfer(msg.sender, to, amount);
         return true;
     }
 
-    function approve(address spender, uint256 amount) external returns (bool) {
+    function approve(
+        address spender,
+        uint256 amount
+    ) external returns (bool) {
         allowance[msg.sender][spender] = amount;
         emit Approval(msg.sender, spender, amount);
         return true;
     }
 
-    function transferFrom(address from, address to, uint256 amount) external returns (bool) {
+    function transferFrom(
+        address from,
+        address to,
+        uint256 amount
+    ) external returns (bool) {
         uint256 allowed = allowance[from][msg.sender];
         if (allowed < amount) revert InsufficientAllowance();
 
@@ -57,14 +70,19 @@ contract MinimalERC20 {
         return true;
     }
 
-    function mint(address to, uint256 amount) external onlyOwner {
+    function mint(
+        address to,
+        uint256 amount
+    ) external onlyOwner {
         totalSupply += amount;
         balanceOf[to] += amount;
 
         emit Transfer(address(0), to, amount);
     }
 
-    function burn(uint256 amount) external {
+    function burn(
+        uint256 amount
+    ) external {
         uint256 balance = balanceOf[msg.sender];
         if (balance < amount) revert InsufficientBalance();
 
@@ -76,7 +94,11 @@ contract MinimalERC20 {
         emit Transfer(msg.sender, address(0), amount);
     }
 
-    function _transfer(address from, address to, uint256 amount) private {
+    function _transfer(
+        address from,
+        address to,
+        uint256 amount
+    ) private {
         uint256 balance = balanceOf[from];
         if (balance < amount) revert InsufficientBalance();
 
