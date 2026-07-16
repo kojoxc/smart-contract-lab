@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
-import {Test, console2, stdError} from "forge-std/Test.sol";
-import {Error} from "../src/Error.sol";
+import { Test, console2, stdError } from "forge-std/Test.sol";
+import { Error } from "../src/Error.sol";
 
 contract ErrorTest is Test {
     Error public err;
@@ -32,6 +32,4 @@ contract ErrorTest is Test {
         assertEq(uint256(2), uint256(2), "test 2");
         assertEq(uint256(3), uint256(3), "test 3");
     }
-
-
 }
