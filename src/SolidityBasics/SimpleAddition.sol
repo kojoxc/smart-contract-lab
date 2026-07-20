@@ -5,11 +5,15 @@ contract SimpleAddition {
     uint256 public a = 10;
     uint256 public b = 20;
 
-    function setA(uint256 _a) public {
+    function setA(
+        uint256 _a
+    ) public {
         a = _a;
     }
 
-    function setB(uint256 _b) public {
+    function setB(
+        uint256 _b
+    ) public {
         b = _b;
     }
 
@@ -17,7 +21,10 @@ contract SimpleAddition {
         return a + b;
     }
 
-    function returnSumOfLocalVariables(uint256 _a, uint256 _b) external pure returns (uint256) {
+    function returnSumOfLocalVariables(
+        uint256 _a,
+        uint256 _b
+    ) external pure returns (uint256) {
         return _a + _b;
     }
 }

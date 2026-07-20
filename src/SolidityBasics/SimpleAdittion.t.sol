@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.20;
 
-import {Test, console2} from "forge-std/Test.sol";
-import {SimpleAddition} from "./SimpleAddition.sol";
-import {UsingInterface} from "./UsingInterface.sol";
+import { Test, console2 } from "forge-std/Test.sol";
+import { SimpleAddition } from "./SimpleAddition.sol";
+import { UsingInterface } from "./UsingInterface.sol";
 
 contract UsingInterface_test is Test {
     SimpleAddition simpleAddition;
@@ -37,6 +37,4 @@ contract UsingInterface_test is Test {
     function test_returnSumOfLocalVariables() external {
         assertEq(simpleAddition.returnSumOfLocalVariables(10, 20), 30);
     }
-
-    
 }
