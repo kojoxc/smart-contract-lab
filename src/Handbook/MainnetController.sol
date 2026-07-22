@@ -4,11 +4,12 @@ pragma solidity 0.8.20;
 import { Test, console2, stdError } from "forge-std/Test.sol";
 
 interface IERC4626 {
-    function convertToShares(uint256 assets) external view returns (uint256);
+    function convertToShares(
+        uint256 assets
+    ) external view returns (uint256);
 }
 
 contract MainnetController {
-
     address public immutable SPARK_PROXY;
 
     uint256 public constant RATE_LIMIT = 5_000_000e18;
@@ -26,20 +27,30 @@ contract MainnetController {
         _;
     }
 
-    constructor(address sparkProxy) {
+    constructor(
+        address sparkProxy
+    ) {
         SPARK_PROXY = sparkProxy;
     }
 
-    function mintUSDS(uint256 amount) external {
+    function mintUSDS(
+        uint256 amount
+    ) external {
         usdsBalances[msg.sender] += amount;
     }
 
-    function setMaxExchangeRate(address asset, uint256 maxShares, uint256 maxAssets) external onlySparkProxy {
+    function setMaxExchangeRate(
+        address asset,
+        uint256 maxShares,
+        uint256 maxAssets
+    ) external onlySparkProxy {
         maxExchangeRates[asset] = ExchangeRateLimit(maxShares, maxAssets);
     }
-    
-    function deposit(address asset, uint256 amount) external {
 
+    function deposit(
+        address asset,
+        uint256 amount
+    ) external {
         if (amount > RATE_LIMIT) {
             revert("RateLimits/rate-limit-exceeded");
         }
@@ -53,15 +64,15 @@ contract MainnetController {
                 revert("MC/exchange-rate-too-high");
             }
         }
-
     }
-
 }
 
 /// TESTING CONTRACT ///
 
 contract MockERC4626 is IERC4626 {
-    function convertToShares(uint256 assets) external pure override returns (uint256) {
+    function convertToShares(
+        uint256 assets
+    ) external pure override returns (uint256) {
         return assets;
     }
 }
@@ -69,7 +80,7 @@ contract MockERC4626 is IERC4626 {
 contract MainnetControllerTest is Test {
     MainnetController mainnetController;
     MockERC4626 suds;
-    
+
     address relayer = address(0x1);
     address sparkProxy = address(0x2);
 
@@ -109,6 +120,5 @@ contract MainnetControllerTest is Test {
 
         vm.prank(relayer);
         mainnetController.deposit(address(suds), 5_000_000e18);
-
     }
 }
